@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send OTP Form</title>
+    <!-- Add Font Awesome CSS link here (optional, for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .otp-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .otp-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .otp-container p {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.799;
+            font-size: 17px;
+        }
+
+
+        .otp-container label,
+        .otp-container input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .otp-container input[type="text"] {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .otp-container .icon {
+            position: relative;
+            /* top: 5px; */
+            margin-right: 10px;
+        }
+
+        .otp-container button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 17px;
+            width: 100%;
+        }
+
+        .otp-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .otp-container i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="otp-container">
+        <h2><i class="fas fa-key icon"></i>ENTER OTP</h2>
+          <form action="/new_password" method="post">
+            <label for="otp"><i class="fas fa-lock icon"></i> OTP:</label>
+            <input type="text" id="otp" name="otp" required>
+            
+            <label for="newPassword"><i class="fas fa-lock icon"></i>NEW PASSWORD:</label>
+            <input type="text" id="newPassword" name="newPassword" required>
+
+            <button type="submit"><i class="fas fa-paper-plane"></i>SUCCESSFULL</button>           
+        </form>
+    </div>
+</body>
+</html>

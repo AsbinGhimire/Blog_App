@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Blog Form</title>
+    <!-- Add Font Awesome CSS link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .add-blog-form {
+            width: 390px;
+            margin: 50px 550px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .add-blog-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .add-blog-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .add-blog-form input[type="text"],
+        .add-blog-form input[type="file"],
+        .add-blog-form textarea {
+            width: 94%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .add-blog-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .add-blog-form button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 99%;
+        }
+
+        .add-blog-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-blog-form i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <%- include ('navBar.ejs') %>
+    <div class="add-blog-form">
+        <h2><i class="fas fa-edit"></i>MY BLOG</h2>
+        <form action="/add_blog" method="post" enctype="multipart/form-data">
+            <label for="title"><i class="fas fa-heading"></i>Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="image"><i class="fas fa-image"></i>Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <label for="description"><i class="fas fa-pencil-alt"></i>Short Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <button type="submit"><i class="fas fa-paper-plane">ADD BLOG</i></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
