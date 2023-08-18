@@ -8,6 +8,9 @@ const { combineBlog } = require('./model');
 const { sendMail, newPassword } = require('./controller/sendMailController');
 const { blogUser } = require('./controller/blogController');
 const { multer, storage } = require("./services/multerConfig");
+const { isAuthenticated } = require('./services/isAuthenticated');
+app.use (require("cookie-parser")());
+
 const upload = multer({ storage: storage });
 
 
@@ -60,6 +63,9 @@ app.get('/input_otp',(req,res)=>{
 app.get('/password',(req,res)=>{
   res.render('comfirmPassword');
 });
+app.get('/single_Page',(req,res)=>{
+  res.render('singlePage');
+});
 
 
 
@@ -78,7 +84,7 @@ app.get("/home",async(req,res)=>{
 // aairwko data lai store garne
 app.post('/register',registerUser);
 app.post('/login',loginUser);
-app.post('/add_blog', upload.single('image'),blogUser); 
+app.post('/add_blog', isAuthenticated, upload.single('image'),blogUser); 
 app.post('/verify_otp',sendMail);
 app.post('/new_password',newPassword);
 

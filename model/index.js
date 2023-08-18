@@ -30,6 +30,9 @@ db.sequelize = sequelize;
 db.combineUser = require("./userModel.js")(sequelize, DataTypes);
 db.combineBlog = require("./blogModel.js")(sequelize, DataTypes);
 
+db.combineUser.hasMany (db.combineBlog);
+db.combineBlog.belongsTo (db.combineUser);
+
 db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done");
 });

@@ -49,7 +49,7 @@ exports.loginUser = async (req, res) => {
     );
 // jwt payload, secret key
 const token = jwt.sign({id:userExist[0].id},'hello');
-console.log(token);
+
 res.cookie('token',token);
 
     if (isPasswordCorrect) {

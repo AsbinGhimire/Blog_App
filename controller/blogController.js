@@ -1,5 +1,6 @@
 const { users, Blog, combineBlog } = require("../model");
 exports.blogUser = async (req,res)=> {
+     console.log("the token ID is :)- "+ req.userId);
     
     const {title, image, description} = req.body;
     console.log(req.file);
