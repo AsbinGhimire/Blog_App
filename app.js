@@ -4,7 +4,7 @@ const session = require('express-session');
 const flash = require ('connect-flash');
 const ejs = require("ejs");
 const { registerUser, loginUser } = require('./controller/userController');
-const { combineBlog } = require('./model');
+const { combineBlog, combineUser } = require('./model');
 const { sendMail, newPassword } = require('./controller/sendMailController');
 const { blogUser } = require('./controller/blogController');
 const { multer, storage } = require("./services/multerConfig");
@@ -64,20 +64,81 @@ app.get('/password',(req,res)=>{
   res.render('comfirmPassword');
 });
 app.get('/single_Page',(req,res)=>{
-  res.render('singlePage');
+  res.render('singleBlog');
 });
-
 
 
 // adding blog data..
 app.get("/home",async(req,res)=>{
-  const blogs = await combineBlog.findAll()
+  const blogs = await combineBlog.findAll({
+    include: combineUser
+  })
+  console.log(blogs)
   res.render('main',{blogs})
   // res.render("main")
 });
 
+// for displaying singleBlog
+app.get('/blogs/:id',async(req,res)=>{
+  const blog = await combineBlog.findAll({
+include: combineUser,    
 
+      where:{
+          id:req.params.id
+            }
+          });
+          console.log(blog)
+      res.render('singleBlog',{blog})
+  });
 
+  // for removing a blog
+app.get('/delete/:id',async(req,res)=>{
+  await combineBlog.destroy({
+      where:{
+          id:req.params.id
+            }
+          });
+      res.redirect('/home');
+  });
+
+// Update blog data and redirect to the blog list page
+app.get('/update/:id', async(req,res) => {
+      
+  const edit= await combineBlog.findAll({
+     where:{
+        id: req.params.id
+     } 
+  });
+  console.log(edit)
+  res.render('editBlogForm',{edit})
+});
+
+app.post('/update/:id',upload.single('image'), async(req,res) => {
+  const update1 = await combineBlog.update({
+    title:req.body.title,
+        description: req.body.description,
+        image: "http://localhost:3000/"+req.file.filename,
+    },{
+       where:{
+          id:req.params.id
+       }
+  });
+  console.log(update1)
+  res.redirect('/blogs/' + req.params.id)
+});
+
+// .......
+app.get("/my_Blog",isAuthenticated,async(req,res)=>{
+  const blogs = await combineBlog.findAll({
+    where:{
+      userId: req.userId
+  },
+
+    include: combineUser
+  });
+  // console.log(blogs)
+  res.render('main',{blogs})
+});
 
 
 

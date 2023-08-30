@@ -70,21 +70,7 @@
       text-align: center;
     }
 
-  /* for readmore */
-  .readmore-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin-left: 10px;
-  background-color: #0d6cd2;
-  color: #ece7e7;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.readmore-btn:hover {
-  background-color: #5a5d61; /* Darker shade on hover */
-}
+  
 
   </style>
 </head>
@@ -100,7 +86,6 @@
             <h3>Username: <%-blog.user.username %></h3>
           <p>Description: <%- blog.description %></p>
 
-          <a href="/blogs/<%- blog.id %>" class="readmore-btn">Read More</a>
         </div>
       <% }) %>
     </div>

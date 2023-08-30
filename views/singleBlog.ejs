@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Single Blog</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&family=Roboto+Mono:wght@500&display=swap');
+
+    body {
+      /* font-family: 'IBM Plex Mono', monospace; */
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .container {
+      /* width: min(100%,950px);c */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .division {
+      background: linear-gradient(rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.6)),
+        url("https://images.pexels.com/photos/8960464/pexels-photo-8960464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+      width: calc(37%);
+      height: 530px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #c2bfbf;
+      border-radius: 5px;
+      background-color: #f0eded;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin: 50px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .division img {
+      height: 290px;
+      width: 280px;
+      margin-bottom: 10px;
+    }
+    .division img:hover {
+      transform: translateY(-10px);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 8px 25px;
+      padding: 8px 20px;
+      background-color: #0d6cd2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background-color: #5a5d61;
+    }
+
+    h1 {
+      font-size: 19px;
+      word-spacing: 5px;
+    }
+
+    h2 {
+
+      font-size: 22px;
+      word-spacing: 5px;
+    }
+
+    h3 {
+      font-size: 19px;
+      word-spacing: 5px;
+    }
+
+    p {
+      font-size: 15px;
+      word-spacing: 0.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="division">
+      <h1>Welcome To My BLOG: <%- blog[0].id %></h3>
+          <img src="<%- blog[0].image %>" alt="BlogApp">
+          <h2>TITLE: <%- blog[0].title %></h2>
+          <h3>USERNAME: <%-blog[0].user.username %></h3>
+          <p>DESCRIPTION: <%- blog[0].description %></p>
+          <a href="/home" class="back-btn">BACK</a>
+          <a href="/delete/<%- blog[0].id %>" class="back-btn">DELETE</a>
+          <a href="/update/<%-blog[0].id %>" class="back-btn">EDIT</a>
+    </div>
+  </div>
+</body>
+
+</html>

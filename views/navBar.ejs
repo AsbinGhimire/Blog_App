@@ -6,12 +6,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&family=Montserrat+Alternates:wght@300&family=Roboto+Mono:wght@500&display=swap'); */
     /* Reset some default styles to ensure consistency */
     body, ul {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      /* background-color: #dcdcdc; */
     }
 
     nav {
@@ -49,6 +49,13 @@
 
     .nav-links li {
       margin-left: 20px; 
+      font-weight: bold;
+      /* font-size: 100px; */
+    }
+    .nav-links span {
+      margin-left: 20px; 
+      font-weight: bold;
+      /* font-size: 100px; */
     }
 
     .nav-links li a {
@@ -80,18 +87,7 @@
       width: 45px; 
     }
 
-    /* Media query for smaller screens */
-    @media (max-width: 768px) {
-      .nav-links {
-        flex-direction: row;
-        align-items: center;
-        margin-right: 10px;
-      }
-
-      .nav-links li {
-        margin: 0 10px;
-      }
-    }
+   
 
   </style>
 </head>
@@ -104,6 +100,7 @@
     <ul class="nav-links">
       <span >MyBlogApp</span>
       <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/my_Blog"><i class="fa fa-home"></i> My Blog</a></li>
       <li><a href="/blog"><i class="fa fa-plus-circle"></i> Add Blog</a></li>
       <li><a href="/login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
       <li><a href="/register"><i class="fa fa-user-plus"></i> Signup</a></li>
